@@ -4,37 +4,34 @@ mInicial = int(mInicial)
 hFinal = int(hFinal)
 mFinal = int(mFinal)
 
-hora = minuto = 0
 
-if hInicial == hFinal and mInicial == mFinal:
-    hora = 24
-elif hFinal > hInicial and mFinal > mInicial:
+if hFinal > hInicial:
     hora = hFinal - hInicial
-    if hora == 1:
-        hora = 0
-    minuto = mFinal - mInicial
-elif hFinal > hInicial and mInicial > mFinal:
-    hora = hFinal - hInicial
-    if hora == 1:
-        hora = 0 
-    minuto = (60 - mInicial) + mFinal
-elif hInicial > hFinal and mFinal > mInicial:
+    if mFinal > mInicial:
+        minuto = mFinal - mInicial
+    elif mInicial > mFinal:
+        hora = hora - 1
+        minuto = (60 - mInicial) + mFinal
+    elif mInicial == mFinal:
+        minuto = 0
+elif hInicial > hFinal:
     hora = (24 - hInicial) + hFinal
-    if hora == 1:
+    if mFinal > mInicial:
+        minuto = mFinal - mInicial
+    elif mInicial > mFinal:
+        hora = hora - 1
+        minuto = (60 - mInicial) + mFinal
+    elif mInicial == mFinal:
+        minuto = 0
+elif hInicial == hFinal:
+    if mFinal > mInicial:
+        minuto = mFinal - mInicial
         hora = 0
-    minuto = mFinal - mInicial
-elif hInicial > hFinal and mInicial > mFinal:
-    hora = (24 - hInicial) + hFinal
-    if hora == 1:
-        hora = 0
-    minuto = (60 - mInicial) + mFinal
-elif hFinal > hInicial and mFinal == mInicial:
-    hora = hFinal - hInicial
-elif hFinal > hInicial and mInicial == mFinal:
-    hora = hFinal - hInicial
-elif hInicial == hFinal and mFinal > mInicial:
-    minuto = mFinal - mInicial
-elif hInicial == hFinal and mInicial > mFinal:
-    minuto = (60 - mInicial) + mFinal
-    
+    elif mInicial > mFinal:
+        minuto = (60 - mInicial) + mFinal
+        hora = 23
+    elif mInicial == mFinal:
+        hora = 24
+        minuto = 0
+
 print("O JOGO DUROU {} HORA(S) E {} MINUTO(S)".format(hora, minuto))
